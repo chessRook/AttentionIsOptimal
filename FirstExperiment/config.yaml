@@ -1,0 +1,5 @@
+AttentionKind: 2
+LearningRate: .0001
+Epochs: 10_000
+BatchSize: 19
+SequenceLength: 20
