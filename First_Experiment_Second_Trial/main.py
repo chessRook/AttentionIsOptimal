@@ -21,7 +21,7 @@ from model import TransformerModel, RNNModel
 import neptune.new as neptune
 
 run = neptune.init(
-    project="chaimchess/AttentionIsOptimalBuildingBlockArticle",
+    project="chaimchess/AttentionIsOptimalBuildingBlock",
     api_token="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUu"
               "YWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5ha"
               "SIsImFwaV9rZXkiOiI1MTE2YjA5MC1mNGE0LTQ1ODgtYjQ3MC0"

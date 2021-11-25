@@ -140,10 +140,6 @@ class Attention3(AttentionCommons):
         return output_2
 
 
-# git commit -m "first commit"
-# git remote add origin git@github.com:alexpchin/<reponame>.git
-# git push -u origin master
-
 class Attention2(AttentionCommons):
     def __init__(self, seq_len, input_dim, embedding_dim):
         super(Attention2, self).__init__(input_dim, embedding_dim)
