@@ -47,5 +47,5 @@ class TransformersFactory:
         return self
 
     def models_list(self):
-        models_list_ = [self.transformer_3, self.transformer_2, self.transformer_4]
+        models_list_ = [self.transformer_2, self.transformer_3, self.transformer_4]
         return models_list_

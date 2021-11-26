@@ -152,6 +152,7 @@ class Attention2(AttentionCommons):
 
     def forward(self, x):
         embed_1, embed_2 = self.W_1(x), self.W_2(x)
+
         attention = embed_1 @ embed_2.transpose(-1, -2)
         output_1 = self.W_O(attention)
         output_2 = self.activation(output_1)
