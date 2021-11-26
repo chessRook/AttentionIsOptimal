@@ -46,7 +46,7 @@ class TransformerModel(nn.Module):
         elif attention_class == 'Attention3':
             attention = Attention3(seq_len, input_dim, embedding_dim)
         elif attention_class == 'Attention4':
-            attention = Attention4(input_dim, embedding_dim)
+            attention = Attention4(seq_len, input_dim, embedding_dim)
         else:
             raise NotImplementedError('Only Attention 2-3-4 Are Supported.')
 
@@ -94,24 +94,27 @@ class AttentionCommons(nn.Module):
 
 
 class Attention4(AttentionCommons):
-    def __init__(self, input_dim, embedding_dim):
+    def __init__(self, seq_len, input_dim, embedding_dim):
         super(Attention4, self).__init__(input_dim, embedding_dim)
+        self.seq_len = seq_len
+        self.seq_len = seq_len
         self.input_dim, self.embedding_dim = input_dim, embedding_dim
         self.W_1 = self.embedding_layer_creator()
         self.W_2 = self.embedding_layer_creator()
         self.W_3 = self.embedding_layer_creator()
         self.W_4 = self.embedding_layer_creator()
-        self.W_O = nn.Linear(embedding_dim, input_dim)
+        self.W_O = nn.Linear(seq_len, input_dim)
         self.activation = nn.Sigmoid()
 
     def forward(self, x):
-        embed_1, embed_2, embed_3, embed_4 \
-            = \
-            self.W_1(x), self.W_2(x), self.W_3(x), self.W_4(x)
-        attention_1 = embed_1.T @ embed_2
-        attention_2 = embed_3.T @ embed_4
-        total_attention = attention_1 @ attention_2
-        output_1 = self.W_O(total_attention)
+        embed_1, embed_2, embed_3, embed_4 = self.W_1(x), self.W_2(x), self.W_3(x), self.W_4(x)
+
+        attention_1 = embed_1 @ embed_2.transpose(-1, -2)
+        attention_2 = embed_3 @ embed_4.transpose(-1, -2)
+
+        attention_3 = attention_1 @ attention_2
+
+        output_1 = self.W_O(attention_3)
         output_2 = self.activation(output_1)
 
         return output_2
