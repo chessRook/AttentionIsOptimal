@@ -17,12 +17,13 @@ batch_size = cfg['BatchSize']
 import neptune.new as neptune
 
 run = neptune.init(
-    project="dan.nav/AttentionIsOptimalBuildingBlock",
-    api_token="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwL"
-              "m5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cH"
-              "M6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXk"
-              "iOiI0MTNiNzMxYS03Mjg2LTQ2ODMtYjQ0Yi0z"
-              "NDJjMmE2YTYxZDcifQ==",
+    project="chaimchess/AttentionIsOptimal",
+    api_token="eyJhcGlfYWRkcmVzcyI6Imh0dHBz"
+              "Oi8vYXBwLm5lcHR1bmUuYWkiLCJhc"
+              "GlfdXJsIjoiaHR0cHM6Ly9hcHAubmV"
+              "wdHVuZS5haSIsImFwaV9rZXkiOiI1M"
+              "TE2YjA5MC1mNGE0LTQ1ODgtYjQ3MC0x"
+              "NTFkOTYwMTg5MWIifQ==",
 )
 
 params = {"learning_rate": 0.001, "optimizer": "Adam"}
