@@ -1,0 +1,4 @@
+modelType: LSTModel
+learningRate: .001
+Epochs: 10_000
+BatchSize: 19
